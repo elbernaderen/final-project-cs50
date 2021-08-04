@@ -13,4 +13,11 @@ claims.db the SQLite3 database, wich has two tables, "claims" and "users". The f
 Here is the decorator route to require login. [Login Required Decorator](https://flask.palletsprojects.com/en/1.1.x/patterns/viewdecorators/)
 ### index.html:
 This is initial page where the user fill the "Surname and Name", direction of the claim and reason of the claim. With a map centered in Córdoba city, when the user searches a new direction, the map is refreshed with ajax without reloading
-the whole page, with a marker added in the place.
+the whole page, with a marker added in the place. The button "Add claim" remains disabled until the form is filled and the reason is chosen.
+### claimed.html:
+If the claim was added, in this page the claim number is given.
+### register.html:
+Here the service agents can register in the page, setting a username (the page recomend a
+  
+### layout.html:
+The html common content in the most of these pages are here. Some things are taken from the **CS50 *Finance*** problem, and the content properties are from Bootstrap.
