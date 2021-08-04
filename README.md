@@ -17,7 +17,8 @@ the whole page, with a marker added in the place. The button "Add claim" remains
 ### claimed.html:
 If the claim was added, in this page the claim number is given.
 ### register.html:
-Here the service agents can register in the page, setting a username (the page recomend a
-  
+Here the service agents can register in the page, setting a username, password  and the code provided (the username and password must be bigger than 8 characters, or the button would remain disabled)
+### map.html:
+This is the html made with **save** from folium, that save the map generated with **folium.Map** and the markers added with **folium.Marker**. Then this html is rendered in the page that requires it. 
 ### layout.html:
 The html common content in the most of these pages are here. Some things are taken from the **CS50 *Finance*** problem, and the content properties are from Bootstrap.
