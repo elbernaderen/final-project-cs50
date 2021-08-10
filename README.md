@@ -4,7 +4,15 @@
 This is a web page that allows neighbors to file complaints about a missing manhole cover or sanitary sewer overflow with the exact address of the problem.
   
 The user enters the page, fills in the forms with their full name, address of the problem, and then chooses the reason for the claim, which may be Sanitary Sewer Overflow or Missing sewer cover, then search for the place, and if this place found is  the problem address, the user presses "Add claim" and is redirected to a page that gives him a claim number. This button will remain disabled until the form is completed.
-All complaints are received so that the sanitary sewer maintenance agent can resolve them, once they are registered on the page, selecting a "User Name", a "Password" and using a code that only service agents have. Agents can view all complaints on a map, differentiated by color, or they can simply view each point of a single complaint reason. In addition, there is a button to delete a resolved claim and all claims can be downloaded in a .csv 
+All complaints are received so that the sanitary sewer maintenance agent can resolve them, once they are registered on the page, selecting a "User Name", a "Password" and using a code that only service agents have. Agents can view all complaints on a map, differentiated by color, or they can simply view each point of a single complaint reason. In addition, there is a button to delete a resolved claim and all claims can be downloaded in a .csv.
+## Requirements:
+  Must install the next libraries:
+#### Important library for many geopython libraries
+!apt install gdal-bin python-gdal python3-gdal 
+#### Install Folium for Geographic data visualization
+!pip install folium
+#### Install plotlyExpress
+!pip install plotly_express
 ## Files:
 ### claims.db:
 claims.db is the SQLite3 database, which has two tables, "claims" and "users". The first one has the address of the claim, the claim number, the coordinates (longitude and latitude), date, and name of the claimer. The other one has the username and hash of the password of the agent.
@@ -23,10 +31,10 @@ After logging in, in this html the agent can view all claims on a map, different
 ### ajax_dir.html:
 The options to select the claim address in claims.html after modifying the reason options, is rendered from the server by this html using ajax and javascript.
 ### map.html:
-This is the html made with **save** from folium, that save the map generated with **folium.Map** and the markers added with **folium.Marker**. Then this html is rendered in the page that requires it.
+This is the html made with **save** of folium, which saves the map generated with **folium.Map** and the markers added with **folium.Marker**. Then this html is rendered on the page that requires it.
 ### get_.html:
 The map is rendered in an iframe when required with this html using javascript and ajax.
 ### del.html:
 This html is used to render the id of the deleted claim shown in an alert, using ajax and javascript.
 ### layout.html:
-The html common content in the most of these pages are here. Some things are taken from the **CS50 *Finance*** problem, and the content properties are from Bootstrap.
+The common html content in most of these pages are here. Some things are taken from the **CS50 *Finance*** problem, and some content properties are from Bootstrap.
