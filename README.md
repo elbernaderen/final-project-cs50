@@ -11,8 +11,10 @@ All complaints are received so that the sanitary sewer maintenance agent can tra
 !apt install gdal-bin python-gdal python3-gdal
 #### Install Folium for Geographic data visualization
 !pip install folium
-#### Install plotlyExpress
-!pip install plotly_express
+## Search function
+**def** loc ():
+This function receives a direction and return the coords of the place. I used this beacause the addresses are generaly given like intersections of streets. The function, searches the coords in the request of searching in googlemaps a direction. Also, it accept the use of cookies. This is taken from
+<https://stackoverflow.com/questions/52638926/geo-coding-for-intersection-street-using-python> and <https://stackoverflow.com/a/66940841/16053204>
 ## Files:
 ### claims.db:
 claims.db is the SQLite3 database, which has two tables, "claims" and "users". The first one has the address of the claim, the claim number, the coordinates (longitude and latitude), date, and name of the claimer. The other one has the username and hash of the password of the agent.
