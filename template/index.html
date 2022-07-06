@@ -1,0 +1,76 @@
+{% extends "layout.html" %}
+
+{% block title %}
+
+{% endblock %}
+
+{% block main %}
+<script>
+$(document).ready(function () {
+  $("#search").click(function (event) {
+            console.log("1");
+            $.ajax({
+              url:"{{url_for('ajax_index')}}",
+              type:"POST",
+              contentType:"application/json; charset=utf-8",
+              dataType: "html",
+              data:JSON.stringify({name: $("#name").val(), direction: $("#dire").val(), reason: $("#reason").val()}),
+              success:function(result){
+                $("#info").html(result);
+              }
+            });
+        });
+      });
+      </script>
+
+        <script>
+            let button = document.querySelector("#submit");
+            document.addEventListener('DOMContentLoaded', function() {
+                let input = document.querySelector("#dire");
+                let name = document.querySelector("#name");
+                let reason = document.querySelector("#reason");
+                reason.addEventListener('change', function(event) {
+                    if (reason.value != "esta" && name.value && input.value) {
+                         document.getElementById("submit").disabled = false;
+                        }
+                    
+                    else {
+                         document.getElementById("submit").disabled = true;
+                    }
+                });
+            });
+
+        </script>
+  <div class="container">
+    <div class="row">
+      <form id="pro" action="/" method="post">
+      <div class="row">
+        <input autocomplete="off" id="name" autofocus class="form-control reqrd" name="name" placeholder="Surname and Name" type="text">
+        <small id="emailHelp" class="form-text text-muted">We'll never share your name with anyone else.</small>
+        <input autocomplete="on" autofocus class="form-control reqrd" name="direction" placeholder="Direction of the problem" type="text" id ="dire">
+      &nbsp;
+        <select name="reason" class="form-control" id="reason">
+        <option selected name="esta">Select a reason of the claim</option>
+        <option name="Sewer overflow">Sanitary sewer overflow</option>
+        <option name="Missing manhole">Missing manhole cover</option>
+        </select>
+      &nbsp;
+      </div>
+      <small id="emailHelp" class="form-text text-muted">We recomend first find the place of the claim, and then add it</small>
+      &nbsp;
+
+        <button id="search" class="btn btn-primary" type="button">Search Place</button>
+        <button id="submit" class="btn btn-primary" type="submit" disabled="disabled">Add Claim</button>
+
+      </form>
+    </div>
+&nbsp;
+<div id="info" class="row">
+<iframe class="map", src="/map" width="600" height="600"></iframe>
+</div>
+  
+
+{% endblock %}
+{% block body %}
+    
+{% endblock %}

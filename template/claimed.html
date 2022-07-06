@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block title %}
+
+{% endblock %}
+
+{% block main %}
+    <script>
+if (window.history.replaceState) { //this avoid a empty data resend
+    window.history.replaceState(null, null, window.location.href);
+}
+</script>
+
+<h7>Thank you, {{ name }}, your claim number is {{ id_claim }}</h7>
+
+&nbsp;
+<p>
+  </p>
+<a class="btn btn-primary" href="/" role="button">Add a claim</a>
+{% endblock %}
+{% block body %}
+    
+{% endblock %}

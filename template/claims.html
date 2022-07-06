@@ -1,0 +1,122 @@
+{% extends "layout.html" %}
+ 
+{% block title %}
+ 
+{% endblock %}
+ 
+ 
+{% block main %}
+<script>
+   $(document).ready(function(){
+        $("#reason_n").change(function(){
+          let cate=$(this).val();
+          console.log("2");
+            $.ajax({
+              url:"{{url_for('ajax')}}",
+              type:"POST",
+              dataType: "html",
+              data:{"data":cate},
+              success:function(response){
+                $("#infodiv").html(response);
+              }   
+            });
+        });
+        $("#reason_n").change(function(){
+          let caten=$(this).val();
+          console.log("1");
+            $.ajax({
+              url:"{{url_for('ajax_dir')}}",
+              type:"POST",
+              dataType: "html",
+              data:{"data":caten},
+              success:function(response){
+                $("#street").html(response);
+                console.log("prueba");
+              }   
+            });
+        });
+        $("#each").change(function(){
+          let categ=$("#each").val();
+          console.log("3");
+            $.ajax({
+              url:"{{url_for('ajax')}}",
+              type:"POST",
+              dataType: "html",
+              data:{"data":categ},
+              success:function(response){
+                $("#infodiv").html(response);
+            }
+          });
+        });
+        $("#delete").click(function(){
+          let categ=$("#each").val();
+          
+            $.ajax({
+              url:"{{url_for('delete')}}",
+              type:"POST",
+              dataType: "html",
+              data:{"data":categ},
+              success:function(response){
+                $("#del").html(response);
+            }
+          });
+        });
+
+
+
+      });
+        let button = document.querySelector("#delete");
+        document.addEventListener('DOMContentLoaded', function() {
+        let input = document.querySelector("#each");
+        input.addEventListener('change', function(event) {
+                    if (input.value !="init") {
+                         document.getElementById("delete").disabled = false;
+                        }
+                    else {
+                         document.getElementById("delete").disabled = true;
+                    }
+                });
+            });
+
+</script>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+      <form>
+        <select id="reason_n" class="form-control" >
+          <option value="all">all</option>
+          <option value="Sewer overflow">Sewer Overflow</option>
+          <option value="Missing manhole">Missing Cover Manhole</option>
+        </select>
+      </form>
+
+      <div id="street">
+        <select class="form-control" id="each">      
+          <option value="init" selected>SELECT THE CLAIM</option>
+            {% for n in date_ %}
+              <option value="{{n[0]}}">claim number {{n[0]}} for {{n[1]}}</option>
+            {% endfor %}
+        </select>
+      </div>
+
+      &nbsp;
+      
+      <button id="delete" class="btn btn-primary" type="button" disabled="disabled">Delete Claim</button>
+      &nbsp;
+      <div id="del">
+
+      </div>
+      &nbsp;
+    </div>
+    <div class="col-sm">
+      <div id="infodiv">
+        <iframe class="map", src="/map" width="600" height="600"></iframe>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+{% block body %}
+    
+{% endblock %}

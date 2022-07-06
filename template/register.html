@@ -1,0 +1,83 @@
+{% extends "layout.html" %}
+{% block head %}
+
+  </script>
+{% endblock %}
+
+{% block title %}
+
+{% endblock %}
+
+{% block main %}
+      <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                let input = document.querySelector('#username');
+                input.addEventListener('keyup', function(event) {
+                    let name = document.querySelector('#name');
+                    if (input.value.length < 8) {
+                        name.innerHTML = `the Username must be bigger than 8 characters`;
+                    }
+                    else {
+                        name.innerHTML = 'Ok';
+                    }
+                });
+            });
+        </script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                let input = document.querySelector('#password');
+                input.addEventListener('keyup', function(event) {
+                    let passwords = document.querySelector('#passwords');
+                    if (input.value.length < 8) {
+                        passwords.innerHTML = `the Password must be bigger than 8 characters`;
+                        
+                    }
+                    else {
+                        passwords.innerHTML = 'Ok';
+                        
+                    }
+                });
+            });
+            document.addEventListener('DOMContentLoaded', function() {
+              let input = document.querySelector('#password');
+              let button = document.querySelector(".submit");
+            input.addEventListener('keyup', function(event) {
+                    let passwords = document.querySelector('#passwords');
+                    if (input.value.length < 8) {
+                        passwords.innerHTML = `the Password must be bigger than 8 characters`;
+                        document.getElementById("submit").disabled = true;
+                    }
+                    else {
+                        passwords.innerHTML = 'Ok';
+                        document.getElementById("submit").disabled = false;
+                    }
+                });
+            });
+        </script>
+    <form action="/register" method="post">
+        <h7>choose a Username</h7>
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control" name="name" placeholder="Username" type="text" id="username">
+        </div>
+        <small class="form-text text-muted" id="name"></small>
+    
+        <h7>Enter a safe password</h7>
+        <div class="form-group">
+            <input class="form-control" name="password" placeholder="Password" type="password" id="password">
+        </div>
+        <small class="form-text text-muted" id="passwords"></small>
+&nbsp;
+        <h7>Enter the given code</h7>
+        <div class="form-group">
+            <input class="form-control" name="code" placeholder="Code" type="password" id="code">
+        </div>
+        <small class="form-text text-muted">{{wrongcode}}</small>
+&nbsp;
+
+        <button id="submit" class="btn btn-primary" type="submit" disabled="disabled" >Log In</button>
+    </form>
+{% endblock %}
+
+{% block body %}
+    
+{% endblock %}
