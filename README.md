@@ -40,4 +40,7 @@ The map is rendered in an iframe when required with this html using javascript a
 This html is used to render the id of the deleted claim shown in an alert, using ajax and javascript.
 ### layout.html:
 The common html content in most of these pages are here. Some things are taken from the **CS50 *Finance*** problem, and some content properties are from Bootstrap.
+# References:
+<https://stackoverflow.com/a/66940841/16053204>
 
+<https://stackoverflow.com/questions/52638926/geo-coding-for-intersection-street-using-python>
