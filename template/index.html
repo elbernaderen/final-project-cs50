@@ -5,6 +5,7 @@
 {% endblock %}
 
 {% block main %}
+
 <script>
 $(document).ready(function () {
   $("#search").click(function (event) {
@@ -33,7 +34,7 @@ $(document).ready(function () {
                     if (reason.value != "esta" && name.value && input.value) {
                          document.getElementById("submit").disabled = false;
                         }
-                    
+
                     else {
                          document.getElementById("submit").disabled = true;
                     }
@@ -66,11 +67,11 @@ $(document).ready(function () {
     </div>
 &nbsp;
 <div id="info" class="row">
-<iframe class="map", src="/map" width="600" height="600"></iframe>
-</div>
-  
+<iframe class="map", src="/map" width="500" height="500"></iframe>
 
+</div>
+</div>
 {% endblock %}
 {% block body %}
-    
+
 {% endblock %}

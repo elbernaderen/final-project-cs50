@@ -1,56 +1,54 @@
 {% extends "layout.html" %}
- 
+
 {% block title %}
- 
+
 {% endblock %}
- 
- 
+
+
 {% block main %}
 <script>
    $(document).ready(function(){
-        $("#reason_n").change(function(){
+        $("#reason_n").change(function mapa(){
           let cate=$(this).val();
-          console.log("2");
             $.ajax({
-              url:"{{url_for('ajax')}}",
+              url:"{{url_for('Ajax')}}",
               type:"POST",
               dataType: "html",
               data:{"data":cate},
               success:function(response){
                 $("#infodiv").html(response);
-              }   
+              }
             });
         });
-        $("#reason_n").change(function(){
+        $("#reason_n").change(function lista(){
           let caten=$(this).val();
           console.log("1");
             $.ajax({
-              url:"{{url_for('ajax_dir')}}",
+              url:"{{url_for('ajax_index')}}",
               type:"POST",
               dataType: "html",
               data:{"data":caten},
               success:function(response){
                 $("#street").html(response);
-                console.log("prueba");
-              }   
+              }
             });
         });
-        $("#each").change(function(){
+        $("#each").change(function myFunction(){
           let categ=$("#each").val();
-          console.log("3");
             $.ajax({
-              url:"{{url_for('ajax')}}",
+              url:"{{url_for('Ajax')}}",
               type:"POST",
               dataType: "html",
               data:{"data":categ},
               success:function(response){
                 $("#infodiv").html(response);
+
             }
           });
+
         });
         $("#delete").click(function(){
           let categ=$("#each").val();
-          
             $.ajax({
               url:"{{url_for('delete')}}",
               type:"POST",
@@ -58,12 +56,11 @@
               data:{"data":categ},
               success:function(response){
                 $("#del").html(response);
+                alert( categ + "  deleted");
+
             }
           });
         });
-
-
-
       });
         let button = document.querySelector("#delete");
         document.addEventListener('DOMContentLoaded', function() {
@@ -78,36 +75,45 @@
                 });
             });
 
+
 </script>
 
 <div class="container">
   <div class="row">
     <div class="col-sm">
       <form>
+        <p> Type of claim</p>
         <select id="reason_n" class="form-control" >
-          <option value="all">all</option>
-          <option value="Sewer overflow">Sewer Overflow</option>
-          <option value="Missing manhole">Missing Cover Manhole</option>
+          <option value="all">All</option>
+          <option value="Sanitary sewer overflow">Sanitary sewer overflow</option>
+          <option value="Missing manhole cover">Missing manhole cover</option>
         </select>
       </form>
+&nbsp;
+<form action="/CSV">
+    <input class="btn btn-primary" type="submit" value="Download" />
+      </form>
 
-      <div id="street">
-        <select class="form-control" id="each">      
+&nbsp;
+<p> Select a especific claim </p>
+        <select class="form-control" id="each">
+
+          <div id="street" >
           <option value="init" selected>SELECT THE CLAIM</option>
             {% for n in date_ %}
               <option value="{{n[0]}}">claim number {{n[0]}} for {{n[1]}}</option>
             {% endfor %}
+          </div>
         </select>
-      </div>
 
-      &nbsp;
-      
+<p>
+
+</p>
+&nbsp;
       <button id="delete" class="btn btn-primary" type="button" disabled="disabled">Delete Claim</button>
-      &nbsp;
-      <div id="del">
+&nbsp;
 
-      </div>
-      &nbsp;
+
     </div>
     <div class="col-sm">
       <div id="infodiv">
@@ -118,5 +124,5 @@
 </div>
 {% endblock %}
 {% block body %}
-    
+
 {% endblock %}

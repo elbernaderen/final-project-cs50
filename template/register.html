@@ -30,11 +30,9 @@
                     let passwords = document.querySelector('#passwords');
                     if (input.value.length < 8) {
                         passwords.innerHTML = `the Password must be bigger than 8 characters`;
-                        
                     }
                     else {
                         passwords.innerHTML = 'Ok';
-                        
                     }
                 });
             });
@@ -53,6 +51,7 @@
                     }
                 });
             });
+
         </script>
     <form action="/register" method="post">
         <h7>choose a Username</h7>
@@ -60,7 +59,7 @@
             <input autocomplete="off" autofocus class="form-control" name="name" placeholder="Username" type="text" id="username">
         </div>
         <small class="form-text text-muted" id="name"></small>
-    
+
         <h7>Enter a safe password</h7>
         <div class="form-group">
             <input class="form-control" name="password" placeholder="Password" type="password" id="password">
@@ -79,5 +78,5 @@
 {% endblock %}
 
 {% block body %}
-    
+
 {% endblock %}
